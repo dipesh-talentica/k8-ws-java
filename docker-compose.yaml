@@ -1,7 +1,7 @@
 # ----------------------------------------------
 # Inventory service: http://localhost:8082
 # Order service: http://localhost:8083
-# Order depends on inventory
+# Order-service depends on inventory
 # -----------------------------------------------
 
 version: '3.9'
