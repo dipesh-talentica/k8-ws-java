@@ -1,0 +1,14 @@
+# Use Java 21 runtime
+FROM openjdk:21-jdk-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy the built JAR file
+COPY inventory-service/target/inventory-service-*.jar inventory-service.jar
+
+# Expose the application's port
+EXPOSE 8082
+
+# Command to run the application
+CMD ["java", "-jar", "inventory-service.jar"]
