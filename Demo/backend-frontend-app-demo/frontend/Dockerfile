@@ -1,4 +1,4 @@
-# Use Node.js as base image
+# Use Node.js as the base image
 FROM node:18
 
 # Set the working directory
@@ -8,11 +8,14 @@ WORKDIR /app
 COPY package.json .
 RUN npm install
 
-# Copy application files
+# Install http-server globally to serve the frontend
+RUN npm install -g http-server
+
+# Copy the rest of the application files
 COPY . .
 
 # Expose the application port
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+# Start the application using http-server
+CMD ["http-server", "-p", "3000", "-a", "0.0.0.0"]
