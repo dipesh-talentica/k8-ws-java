@@ -17,41 +17,41 @@ Ensure you have the following installed on your machine:
 
    ```yaml
    
-   services:
-     postgres:
-       image: postgres:latest
-       container_name: postgres_db
-       restart: always
-       environment:
-         POSTGRES_USER: admin
-         POSTGRES_PASSWORD: admin123
-         POSTGRES_DB: my_database
-       volumes:
-         - postgres_data:/var/lib/postgresql/data
-       ports:
-         - "5432:5432"
-       networks:
-         - app_network
+name: demo_docker_compose
 
-     pgadmin:
-       image: dpage/pgadmin4:latest
-       container_name: pgadmin
-       restart: always
-       environment:
-         PGADMIN_DEFAULT_EMAIL: admin@example.com
-         PGADMIN_DEFAULT_PASSWORD: admin123
-       ports:
-         - "5050:80"
-       networks:
-         - app_network
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: my_database
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app_network
 
-   volumes:
-     postgres_data:
-       driver: local
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    networks:
+      - app_network
 
-   networks:
-    app_network:
-       driver: bridge       
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  app_network:
+    driver: bridge    
    ```
 
 2. Start the containers:
@@ -126,6 +126,21 @@ Ensure you have the following installed on your machine:
   ```bash
   docker exec -it pgadmin ping postgres
   ```
+
+- To delete the docker images. List the images and then delete.
+  ```bash
+  docker images
+  docker rmi <image_id_1> <image_id_2> ...
+  ```
+
+- To delete the docker containers, List containers and then delete.
+  ```bash
+  docker ps -a
+  docker rm <container_id_or_name>
+
+  ```
+
+
 
 ---
 
