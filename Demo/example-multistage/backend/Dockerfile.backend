@@ -1,0 +1,25 @@
+# Stage 1: Development environment
+FROM node:18 AS development
+
+WORKDIR /usr/src/app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+EXPOSE 5000
+
+# Command for development
+CMD ["npm", "run", "dev"]
+
+# Stage 2: Production environment
+FROM node:18-alpine AS production
+
+WORKDIR /usr/src/app
+COPY package.json package-lock.json ./
+RUN npm install --production
+COPY . .
+
+# Expose port 5000 for the production server
+EXPOSE 5000
+
+# Start the server
+CMD ["node", "server.js"]
