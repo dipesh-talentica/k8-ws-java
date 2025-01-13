@@ -15,45 +15,45 @@ Ensure you have the following installed on your github workspace:
 
 ## Setup Instructions
 
-1.Create a folder demo and inside it create a `docker-compose.yml` file with the following content:
+1.Create a folder demo and inside it create a `docker-compose.yaml` file with the following content:
 
    ```yaml
    
-name: demo_docker_compose
+  name: demo_docker_compose
 
-services:
-  postgres:
-    image: postgres:latest
-    container_name: postgres_db
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123
-      POSTGRES_DB: my_database
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    networks:
-      - app_network
+  services:
+    postgres:
+      image: postgres:latest
+      container_name: postgres_db
+      environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: admin123
+        POSTGRES_DB: my_database
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      ports:
+        - "5432:5432"
+      networks:
+        - app_network
 
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    container_name: pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin123
-    ports:
-      - "5050:80"
-    networks:
-      - app_network
+    pgadmin:
+      image: dpage/pgadmin4:latest
+      container_name: pgadmin
+      environment:
+        PGADMIN_DEFAULT_EMAIL: admin@example.com
+        PGADMIN_DEFAULT_PASSWORD: admin123
+      ports:
+        - "5050:80"
+      networks:
+        - app_network
 
-volumes:
-  postgres_data:
-    driver: local
+  volumes:
+    postgres_data:
+      driver: local
 
-networks:
-  app_network:
-    driver: bridge    
+  networks:
+    app_network:
+      driver: bridge    
    ```
 
 2. Start the containers:
