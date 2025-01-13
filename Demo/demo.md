@@ -5,9 +5,11 @@ This guide explains how to set up a PostgreSQL database and pgAdmin using Docker
 
 ## Prerequisites
 
-Ensure you have the following installed on your machine:
+Ensure you have the following installed on your github workspace:
 - [Docker](https://www.docker.com/products/docker-desktop)
 - [Docker Compose](https://docs.docker.com/compose/)
+- A GitHub repository where you can create a Codespace.
+- Docker installed in your GitHub Codespace (pre-installed in most setups).
 
 ---
 
@@ -140,8 +142,18 @@ networks:
 
   ```
 
-
-
 ---
 
 Enjoy your PostgreSQL setup with pgAdmin!
+---
+
+
+### Key Takeways
+1. Docker Compose simplifies multi-container setups.
+2. It's easy to configure and run services with a single YAML file.
+3. This task demonstrated how to use Compose for local development using GitHub Codespaces.    
+
+
+### Reference you can visit
+1. https://waytoeasylearn.com/learn/docker-compose-commands/
+2. https://docs.docker.com/compose/
